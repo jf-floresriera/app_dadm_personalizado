@@ -21,7 +21,9 @@
     <!-- Theme dialog -->
     <string name="theme_choose">Elige una Temática</string>
     <string name="theme_classic">Clásico (X vs O)</string>
-    <string name="theme_halloween">Halloween (🦇 vs 🎃)</string>
+    <string name="theme_coast">Costa (🐚 vs ⭐)</string>
+    <string name="theme_llanero">Llano Venezolano (🎶 vs 🪇)</string>
+    <string name="theme_cowboy">Vaquero Country (🤠 vs 🐎)</string>
 
     <!-- Mode dialog -->
     <string name="mode_choose">Choose Game Mode</string>

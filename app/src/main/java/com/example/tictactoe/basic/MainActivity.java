@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private int mScoreComputer = 0;
     private int mScoreTies = 0;
 
-    private int mCurrentTheme = 0; // 0: Clásico, 1: Halloween
+    private int mCurrentTheme = 0; // 0: Clásico, 1: Costa, 2: Llanero, 3: Vaquero
 
     private MediaPlayer mHumanMediaPlayer;
     private MediaPlayer mComputerMediaPlayer;
@@ -114,9 +114,15 @@ public class MainActivity extends AppCompatActivity {
         if (mCurrentTheme == 0) {
             mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.sword);
             mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.swish);
-        } else {
-            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bat_sound);
-            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ghost_sound);
+        } else if (mCurrentTheme == 1) {
+            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wave_sound);
+            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.seagull_sound);
+        } else if (mCurrentTheme == 2) {
+            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.harp_sound);
+            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.cuatro_sound);
+        } else if (mCurrentTheme == 3) {
+            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.whip_sound);
+            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.banjo_sound);
         }
     }
 
@@ -242,7 +248,9 @@ public class MainActivity extends AppCompatActivity {
                 builder.setTitle(R.string.theme_choose);
                 final CharSequence[] themes = {
                         getResources().getString(R.string.theme_classic),
-                        getResources().getString(R.string.theme_halloween)};
+                        getResources().getString(R.string.theme_coast),
+                        getResources().getString(R.string.theme_llanero),
+                        getResources().getString(R.string.theme_cowboy)};
 
                 builder.setSingleChoiceItems(themes, mCurrentTheme, (d, item) -> {
                     d.dismiss();

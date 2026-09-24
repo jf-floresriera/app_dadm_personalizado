@@ -1,13 +1,15 @@
-# App DADM Personalizada 🎨🧛‍♂️
+# App DADM Personalizada 🎨🎸🐴
 
 Bienvenido a la evolución definitiva de la aplicación: **App DADM Personalizada**. En este nuevo repositorio hemos llevado el desarrollo a un nivel más avanzado integrando una arquitectura de **Temáticas Dinámicas (Theme Switching)** usando Custom Views y Sound Management.
 
 ## 🚀 ¿Qué se agregó en esta versión personalizada?
 
-### 1. Sistema de Temáticas Dual (Classic vs. Halloween)
-Ahora el usuario puede cambiar toda la experiencia gráfica y auditiva en tiempo real a través del menú de opciones.
-*   **Tema Clásico:** El tradicional juego de 'X' (Azul) contra 'O' (Rojo), con sonidos estándar (Sword & Swish).
-*   **Tema Halloween:** Un diseño escalofriante con un **Murciélago 🦇** (Morado oscuro) y una **Calabaza 🎃** (Naranja/Verde) acompañados por nuevos efectos de sonido de ambiente espectral.
+### 1. Sistema Multi-Temáticas (4 en 1)
+Ahora el usuario puede cambiar toda la experiencia gráfica y auditiva en tiempo real a través del menú de opciones. ¡Olvídate de Halloween, nos pusimos creativos y culturales!
+*   🔵 **Tema Clásico:** El tradicional juego de 'X' contra 'O' con sonidos de espada y deslizamiento (Sword & Swish).
+*   🏖️ **Tema Costa:** Relájate en la playa con **Conchas Marinas (🐚)** vs **Estrellas de Mar (⭐)**.
+*   🇻🇪 **Tema Llano Venezolano:** Una experiencia con mucho joropo y tradición: **Arpa (🎶)** vs **Maracas (🪇)**.
+*   🤠 **Tema Vaquero (Country):** Un duelo en el viejo oeste usando **Sombreros Vaqueros (🤠)** y **Herraduras (🐎)**.
 
 ### 2. Actualización Dinámica del `BoardView` (Custom Views)
 Hemos implementado un método `setTheme(int)` dentro de nuestra vista personalizada.

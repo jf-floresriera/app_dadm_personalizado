@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- Maracas Llaneras -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M30,30 A15,15 0 1,1 60,30 A15,15 0 1,1 30,30" />
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="6"
+        android:pathData="M45,45 L60,80" />
+    <path
+        android:fillColor="#F44336"
+        android:pathData="M60,50 A15,15 0 1,1 90,50 A15,15 0 1,1 60,50" />
+    <path
+        android:strokeColor="#795548"
+        android:strokeWidth="6"
+        android:pathData="M75,65 L60,90" />
+</vector>
