@@ -19,6 +19,9 @@ public class BoardView extends View {
     private Bitmap mComputerBitmap;
     private Paint mPaint;
     private BoardGame mGame;
+    
+    // Almacena el tema actual (0 = Clásico, 1 = Halloween)
+    private int mCurrentTheme = 0;
 
     public BoardView(Context context) {
         super(context);
@@ -36,12 +39,24 @@ public class BoardView extends View {
     }
 
     public void initialize() {
-        // En lugar de usar BitmapFactory (que no soporta Vectores XML de forma nativa),
-        // convertimos nuestros vectores vectoriales (x_img.xml y o_img.xml) a Bitmaps para dibujarlos.
-        mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.x_img);
-        mComputerBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.o_img);
-        
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        loadThemeBitmaps();
+    }
+    
+    public void setTheme(int theme) {
+        mCurrentTheme = theme;
+        loadThemeBitmaps();
+        invalidate(); // Forzar el redibujado de la pantalla con las nuevas gráficas
+    }
+    
+    private void loadThemeBitmaps() {
+        if (mCurrentTheme == 0) {
+            mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.x_img);
+            mComputerBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.o_img);
+        } else {
+            mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.bat_img);
+            mComputerBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.pumpkin_img);
+        }
     }
 
     private Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {

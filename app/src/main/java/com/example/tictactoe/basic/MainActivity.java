@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     static final int DIALOG_QUIT_ID = 1;
     static final int DIALOG_ABOUT_ID = 2;
     static final int DIALOG_MODE_ID = 3;
+    static final int DIALOG_THEME_ID = 4;
 
     private TextView mTvScoreHuman;
     private TextView mTvScoreComputer;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private int mScoreHuman = 0;
     private int mScoreComputer = 0;
     private int mScoreTies = 0;
+
+    private int mCurrentTheme = 0; // 0: Clásico, 1: Halloween
 
     private MediaPlayer mHumanMediaPlayer;
     private MediaPlayer mComputerMediaPlayer;
@@ -85,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     showDialog(DIALOG_DIFFICULTY_ID);
                 }
                 return true;
+            } else if (itemId == R.id.theme_selection) {
+                showDialog(DIALOG_THEME_ID);
+                return true;
             } else if (itemId == R.id.about) {
                 showDialog(DIALOG_ABOUT_ID);
                 return true;
@@ -98,8 +104,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.sword);
-        mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.swish);
+        loadSounds();
+    }
+
+    private void loadSounds() {
+        if (mHumanMediaPlayer != null) mHumanMediaPlayer.release();
+        if (mComputerMediaPlayer != null) mComputerMediaPlayer.release();
+
+        if (mCurrentTheme == 0) {
+            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.sword);
+            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.swish);
+        } else {
+            mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bat_sound);
+            mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ghost_sound);
+        }
     }
 
     @Override
@@ -158,6 +176,9 @@ public class MainActivity extends AppCompatActivity {
                 showDialog(DIALOG_DIFFICULTY_ID);
             }
             return true;
+        } else if (itemId == R.id.theme_selection) {
+            showDialog(DIALOG_THEME_ID);
+            return true;
         } else if (itemId == R.id.about) {
             showDialog(DIALOG_ABOUT_ID);
             return true;
@@ -213,6 +234,27 @@ public class MainActivity extends AppCompatActivity {
                     else if (item == 1) mGame.setDifficultyLevel(BoardGame.DifficultyLevel.Harder);
                     else mGame.setDifficultyLevel(BoardGame.DifficultyLevel.Expert);
                     Toast.makeText(getApplicationContext(), levels[item], Toast.LENGTH_SHORT).show();
+                });
+                dialog = builder.create();
+                break;
+
+            case DIALOG_THEME_ID:
+                builder.setTitle(R.string.theme_choose);
+                final CharSequence[] themes = {
+                        getResources().getString(R.string.theme_classic),
+                        getResources().getString(R.string.theme_halloween)};
+
+                builder.setSingleChoiceItems(themes, mCurrentTheme, (d, item) -> {
+                    d.dismiss();
+                    mCurrentTheme = item;
+                    
+                    // Actualizar el Custom View
+                    mBoardView.setTheme(mCurrentTheme);
+                    
+                    // Actualizar los sonidos
+                    loadSounds();
+                    
+                    Toast.makeText(getApplicationContext(), themes[item], Toast.LENGTH_SHORT).show();
                 });
                 dialog = builder.create();
                 break;

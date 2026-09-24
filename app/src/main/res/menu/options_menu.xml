@@ -12,6 +12,10 @@
         android:title="@string/menu_difficulty"
         android:icon="@android:drawable/ic_menu_sort_by_size"
         app:showAsAction="never" />
+    <item android:id="@+id/theme_selection"
+        android:title="@string/menu_theme"
+        android:icon="@android:drawable/ic_menu_gallery"
+        app:showAsAction="never" />
     <item android:id="@+id/about"
         android:title="@string/menu_about"
         android:icon="@android:drawable/ic_menu_info_details"

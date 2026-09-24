@@ -15,7 +15,13 @@
     <string name="menu_mode">Game Mode</string>
     <string name="menu_difficulty">Difficulty</string>
     <string name="menu_about">About</string>
+    <string name="menu_theme">Temática</string>
     <string name="menu_quit">Quit</string>
+
+    <!-- Theme dialog -->
+    <string name="theme_choose">Elige una Temática</string>
+    <string name="theme_classic">Clásico (X vs O)</string>
+    <string name="theme_halloween">Halloween (🦇 vs 🎃)</string>
 
     <!-- Mode dialog -->
     <string name="mode_choose">Choose Game Mode</string>
