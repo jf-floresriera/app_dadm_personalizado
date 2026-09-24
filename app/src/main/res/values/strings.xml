@@ -22,7 +22,7 @@
     <string name="theme_choose">Elige un Tema</string>
     <string name="theme_classic">Clásico (X vs O)</string>
     <string name="theme_coast">Costa (🐚 vs ⭐)</string>
-    <string name="theme_llanero">Llano Venezolano (🦦 vs 🪇)</string>
+    <string name="theme_llanero">Llanos (🦦 vs 🪇)</string>
     <string name="theme_cowboy">Vaquero Country (🤠 vs 🐎)</string>
 
     <!-- Mode dialog -->

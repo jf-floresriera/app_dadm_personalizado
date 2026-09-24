@@ -8,7 +8,7 @@ Bienvenido a la evolución definitiva de la aplicación: **App DADM Personalizad
 Ahora el usuario puede cambiar toda la experiencia gráfica y auditiva en tiempo real a través del menú de opciones.
 *   🔵 **Tema Clásico:** El tradicional juego de 'X' contra 'O' con sonidos de espada y deslizamiento (Sword & Swish).
 *   🏖️ **Tema Costa:** Relájate en la playa con **Conchas Marinas (🐚)** vs **Estrellas de Mar (⭐)**.
-*   🇻🇪 **Tema Llano Venezolano:** Una experiencia con mucho joropo y tradición: **Chigüire (🦦)** vs **Maracas (🪇)**.
+*   🇻🇪 **Tema Llanos:** Una experiencia con mucho joropo y tradición: **Chigüire (🦦)** vs **Maracas (🪇)**.
 *   🤠 **Tema Vaquero (Country):** Un duelo en el viejo oeste usando **Sombreros Vaqueros (🤠)** y **Herraduras (🐎)**.
 
 ### 2. Actualización Dinámica del Menú
@@ -31,7 +31,7 @@ Para asegurar que tu aplicación se pueda compilar, instalé pequeños archivos 
 2.  Renómbralos exactamente así:
     *   `sword.wav` y `swish.wav` (Para clásico).
     *   `wave_sound.wav` y `seagull_sound.wav` (Para Costa).
-    *   `harp_sound.wav` y `cuatro_sound.wav` (Para el Llano Venezolano).
+    *   `harp_sound.wav` y `cuatro_sound.wav` (Para los Llanos).
     *   `whip_sound.wav` y `banjo_sound.wav` (Para Vaquero Country).
 3.  Abre tu proyecto en Android Studio.
 4.  Arrastra y suelta tus archivos de audio reales dentro de la carpeta: `app/src/main/res/raw/`. Reemplaza ("Overwrite") los archivos silenciosos existentes.
