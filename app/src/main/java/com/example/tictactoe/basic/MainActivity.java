@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     private MediaPlayer mHumanMediaPlayer;
     private MediaPlayer mComputerMediaPlayer;
+    private MediaPlayer mWinMediaPlayer;
+    private MediaPlayer mLoseMediaPlayer;
+    private MediaPlayer mTieMediaPlayer;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -124,19 +127,21 @@ public class MainActivity extends AppCompatActivity {
             mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.whip_sound);
             mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.banjo_sound);
         }
+
+        // Cargar sonidos de fin de juego (solo se cargan una vez si son nulos)
+        if (mWinMediaPlayer == null) mWinMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.win_sound);
+        if (mLoseMediaPlayer == null) mLoseMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lose_sound);
+        if (mTieMediaPlayer == null) mTieMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.tie_sound);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mHumanMediaPlayer != null) {
-            mHumanMediaPlayer.release();
-            mHumanMediaPlayer = null;
-        }
-        if (mComputerMediaPlayer != null) {
-            mComputerMediaPlayer.release();
-            mComputerMediaPlayer = null;
-        }
+        if (mHumanMediaPlayer != null) { mHumanMediaPlayer.release(); mHumanMediaPlayer = null; }
+        if (mComputerMediaPlayer != null) { mComputerMediaPlayer.release(); mComputerMediaPlayer = null; }
+        if (mWinMediaPlayer != null) { mWinMediaPlayer.release(); mWinMediaPlayer = null; }
+        if (mLoseMediaPlayer != null) { mLoseMediaPlayer.release(); mLoseMediaPlayer = null; }
+        if (mTieMediaPlayer != null) { mTieMediaPlayer.release(); mTieMediaPlayer = null; }
     }
 
     private final View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -370,27 +375,58 @@ public class MainActivity extends AppCompatActivity {
         mTvScoreTies.setText("Empates: " + mScoreTies);
     }
 
+    private void showGameOverDialog(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title)
+               .setMessage(message)
+               .setCancelable(false)
+               .setPositiveButton("OK", (dialog, id) -> startNewGame());
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     private void endGame(int winnerCode) {
         mGameOver = true;
+        
+        String tempTitle = "";
+        String tempMessage = "";
 
         switch (winnerCode) {
             case 1:
                 mTvStatus.setText(R.string.result_tie);
                 mScoreTies++;
+                tempTitle = "¡Empate!";
+                tempMessage = "El juego ha terminado en empate.";
+                if (mTieMediaPlayer != null) mTieMediaPlayer.start();
                 break;
             case 2:
                 mTvStatus.setText(R.string.result_human_win);
                 mScoreHuman++;
+                tempTitle = "¡Victoria!";
+                tempMessage = "¡Felicidades, Jugador 1 ha ganado!";
+                if (mWinMediaPlayer != null) mWinMediaPlayer.start();
                 break;
             case 3:
                 if (mGame.getGameMode() == BoardGame.GameMode.SinglePlayer) {
                     mTvStatus.setText(R.string.result_computer_win);
+                    tempTitle = "¡Derrota!";
+                    tempMessage = "La Inteligencia Artificial te ha vencido.";
+                    if (mLoseMediaPlayer != null) mLoseMediaPlayer.start();
                 } else {
                     mTvStatus.setText(R.string.result_human_2_win);
+                    tempTitle = "¡Victoria Jugador 2!";
+                    tempMessage = "¡Felicidades, el Jugador 2 ha ganado!";
+                    if (mWinMediaPlayer != null) mWinMediaPlayer.start();
                 }
                 mScoreComputer++;
                 break;
         }
         updateScoreBoard();
+        
+        final String finalTitle = tempTitle;
+        final String finalMessage = tempMessage;
+        
+        // Mostrar el diálogo flotante de fin de juego después de un pequeño retraso
+        new Handler(Looper.getMainLooper()).postDelayed(() -> showGameOverDialog(finalTitle, finalMessage), 300);
     }
 }
