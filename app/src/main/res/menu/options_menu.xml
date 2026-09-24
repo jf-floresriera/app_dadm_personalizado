@@ -14,7 +14,7 @@
         app:showAsAction="never" />
     <item android:id="@+id/theme_selection"
         android:title="@string/menu_theme"
-        android:icon="@android:drawable/ic_menu_gallery"
+        android:icon="@drawable/ic_theme_palette"
         app:showAsAction="never" />
     <item android:id="@+id/about"
         android:title="@string/menu_about"

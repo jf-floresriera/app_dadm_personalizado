@@ -57,7 +57,7 @@ public class BoardView extends View {
             mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.shell_img);
             mComputerBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.starfish_img);
         } else if (mCurrentTheme == 2) {
-            mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.harp_img);
+            mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.chiguire_img);
             mComputerBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.maracas_img);
         } else if (mCurrentTheme == 3) {
             mHumanBitmap = getBitmapFromVectorDrawable(getContext(), R.drawable.hat_img);
